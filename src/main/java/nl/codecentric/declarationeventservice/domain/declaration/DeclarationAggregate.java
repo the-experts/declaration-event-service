@@ -14,6 +14,7 @@ public class DeclarationAggregate {
 
     @AggregateIdentifier
     private UUID id;
+    private DeclarationType type;
 
     public  DeclarationAggregate() {
     }
@@ -23,9 +24,19 @@ public class DeclarationAggregate {
         apply(new DeclarationCreatedEvent(command.id()));
     }
 
+    @CommandHandler
+    public DeclarationAggregate(SelectDeclarationTypeCommand command) {
+        apply(new DeclarationTypeSelectedEvent(command.id(), command.type()));
+    }
+
+
     @EventSourcingHandler
     public void on(DeclarationCreatedEvent event) {
         this.id = event.id();
     }
 
+    @EventSourcingHandler
+    public void on(DeclarationTypeSelectedEvent event) {
+        this.type = event.type();
+    }
 }

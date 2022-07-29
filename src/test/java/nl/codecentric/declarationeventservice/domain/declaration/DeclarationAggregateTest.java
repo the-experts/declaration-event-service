@@ -12,7 +12,7 @@ public class DeclarationAggregateTest {
 
     @BeforeEach
     void setUp() {
-        this.fixture = new AggregateTestFixture(DeclarationAggregate.class);
+        this.fixture = new AggregateTestFixture<>(DeclarationAggregate.class);
     }
 
     @Test
@@ -23,11 +23,11 @@ public class DeclarationAggregateTest {
                 .expectEvents(new DeclarationCreatedEvent(uuid));
     }
 
-//    @Test
-//    void shouldFailWhenDeclarationAlreadyExists() {
-//        var uuid = UUID.randomUUID();
-//        fixture.given(new DeclarationCreatedEvent(uuid))
-//                .when(new CreateDeclarationCommand(uuid))
-//                .expectException(IllegalArgumentException.class);
-//    }
+    @Test
+    void shouldHandleSelectDeclarationTypeCommand() {
+        var uuid = UUID.randomUUID();
+        fixture.given(new DeclarationCreatedEvent(uuid))
+                .when(new SelectDeclarationTypeCommand(uuid, DeclarationType.FUEL))
+                .expectEvents(new DeclarationTypeSelectedEvent(uuid, DeclarationType.FUEL));
+    }
 }

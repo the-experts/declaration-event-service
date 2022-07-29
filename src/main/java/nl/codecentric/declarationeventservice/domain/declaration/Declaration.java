@@ -15,4 +15,10 @@ public class Declaration  {
 
     @Id
     private UUID id;
+
+    private DeclarationType type;
+
+    public void setType(DeclarationType type) {
+        this.type = type;
+    }
 }

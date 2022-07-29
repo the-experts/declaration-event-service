@@ -1,6 +1,7 @@
 package nl.codecentric.declarationeventservice.api;
 
 import nl.codecentric.declarationeventservice.domain.declaration.CreateDeclarationCommand;
+import nl.codecentric.declarationeventservice.domain.declaration.SelectDeclarationTypeCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
@@ -18,5 +19,11 @@ public class DeclarationController {
     public String createDeclaration(@Argument CreateDeclarationCommand command) {
         commandGateway.send(command);
         return "accepted";
+    }
+
+    @MutationMapping
+    public String selectDeclarationType(@Argument SelectDeclarationTypeCommand command) {
+        commandGateway.send(command);
+        return "declaration type accepted";
     }
 }

@@ -1,5 +1,6 @@
 package nl.codecentric.declarationeventservice.domain.declaration;
 
+import nl.codecentric.declarationeventservice.repository.declaration.DeclarationRepository;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,13 @@ public class DeclarationProjection {
     @EventHandler
     public void on(DeclarationCreatedEvent event) {
         Declaration declaration = new Declaration(event.id());
+        declarationRepository.save(declaration);
+    }
+
+    @EventHandler
+    public void on(DeclarationTypeSelectedEvent event) {
+        Declaration declaration = declarationRepository.findById(event.id().toString()).get();
+        declaration.setType(event.type());
         declarationRepository.save(declaration);
     }
 }

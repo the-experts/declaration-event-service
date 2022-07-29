@@ -1,5 +1,6 @@
 package nl.codecentric.declarationeventservice.domain.user;
 
+import nl.codecentric.declarationeventservice.repository.user.UserRepository;
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Component;
