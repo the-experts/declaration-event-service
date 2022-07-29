@@ -24,12 +24,4 @@ class UserAggregateTest {
                 .when(new CreateUserCommand(uuid, "John", "John@codecentric.nl", "password"))
                 .expectEvents(new UserCreatedEvent(uuid, "John", "John@codecentric.nl", "password"));
     }
-
-    @Test
-    void itShouldFail() {
-        var uuid = UUID.randomUUID();
-        fixture.given(new UserCreatedEvent(uuid, "John", "John@codecentric.nl", "password"))
-                .when(new CreateUserCommand(uuid, "John", "John@codecentric.nl", "password"))
-                .expectException(IllegalArgumentException.class);
-    }
 }
