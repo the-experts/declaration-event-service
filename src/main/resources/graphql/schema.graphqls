@@ -5,6 +5,7 @@ type Query {
 type Mutation {
     createUser(command: CreateUserCommand): String
     updatePassword(command: UpdatePasswordCommand): String
+    createDeclaration(command: CreateDeclaration): String
 }
 
 input CreateUserCommand {
@@ -17,4 +18,8 @@ input CreateUserCommand {
 input UpdatePasswordCommand {
     employeeId: String
     password: String
+}
+
+input CreateDeclaration {
+    id: String
 }
