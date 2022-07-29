@@ -6,6 +6,7 @@ type Mutation {
     createUser(command: CreateUserCommand): String
     updatePassword(command: UpdatePasswordCommand): String
     createDeclaration(command: CreateDeclaration): String
+    selectDeclarationType(command: SelectDeclarationType): String
 }
 
 input CreateUserCommand {
@@ -22,4 +23,13 @@ input UpdatePasswordCommand {
 
 input CreateDeclaration {
     id: String
+}
+
+input SelectDeclarationType {
+    id: String
+    type: DeclarationType
+}
+
+enum DeclarationType {
+    FUEL, ITEM
 }
