@@ -25,7 +25,7 @@ public class DeclarationAggregate {
     }
 
     @CommandHandler
-    public DeclarationAggregate(SelectDeclarationTypeCommand command) {
+    public void handle(SelectDeclarationTypeCommand command) {
         apply(new DeclarationTypeSelectedEvent(command.id(), command.type()));
     }
 
