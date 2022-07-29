@@ -16,7 +16,7 @@ public class DeclarationProjection {
 
     @EventHandler
     public void on(DeclarationCreatedEvent event) {
-        Declaration declaration = new Declaration(event.id());
+        Declaration declaration = new Declaration(event.id(), event.employeeId());
         declarationRepository.save(declaration);
     }
 

@@ -23,6 +23,7 @@ input UpdatePasswordCommand {
 
 input CreateDeclaration {
     id: String
+    employeeId: String
 }
 
 input SelectDeclarationType {

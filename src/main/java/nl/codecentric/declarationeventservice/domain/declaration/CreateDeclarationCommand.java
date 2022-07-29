@@ -4,5 +4,5 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 import java.util.UUID;
 
-public record CreateDeclarationCommand(@TargetAggregateIdentifier UUID id) {
+public record CreateDeclarationCommand(@TargetAggregateIdentifier UUID id, UUID employeeId) {
 }
