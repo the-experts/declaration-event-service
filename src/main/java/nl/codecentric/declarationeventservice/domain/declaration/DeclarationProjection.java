@@ -23,7 +23,7 @@ public class DeclarationProjection {
 
     @EventHandler
     public void on(DeclarationTypeSelectedEvent event){
-        Optional<Declaration> declaration = declarationRepository.findById(event.declarationId().toString());
+        Optional<Declaration> declaration = declarationRepository.findById(event.declarationId());
         if(declaration.isPresent()) {
             Declaration updatedDeclaration = declaration.get();
             updatedDeclaration.setDeclarationType(event.declarationType());

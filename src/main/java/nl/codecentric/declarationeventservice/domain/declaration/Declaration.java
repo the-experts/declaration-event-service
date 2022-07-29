@@ -25,4 +25,8 @@ public class Declaration {
     public void setDeclarationType(DeclarationType declarationType) {
         this.declarationType = declarationType;
     }
+
+    public String getEmployeeId() {
+        return employeeId;
+    }
 }
