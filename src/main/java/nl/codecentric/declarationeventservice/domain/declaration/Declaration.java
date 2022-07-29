@@ -9,6 +9,7 @@ public class Declaration  {
     @Id
     private String declarationId;
     private Boolean isFinished;
+    private Integer taxPercentage;
     private UUID employeeId;
     private DeclarationType type;
 
@@ -22,5 +23,8 @@ public class Declaration  {
     }
     public void setType(DeclarationType type) {
         this.type = type;
+    }
+    public void setTaxPercentage(Integer taxPercentage) {
+        this.taxPercentage = taxPercentage;
     }
 }

@@ -1,5 +1,6 @@
 package nl.codecentric.declarationeventservice.api;
 
+import nl.codecentric.declarationeventservice.domain.declaration.AddDeclarationTaxPercentageCommand;
 import nl.codecentric.declarationeventservice.domain.declaration.CreateDeclarationCommand;
 import nl.codecentric.declarationeventservice.domain.declaration.SelectDeclarationTypeCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
@@ -25,5 +26,11 @@ public class DeclarationController {
     public String selectDeclarationType(@Argument SelectDeclarationTypeCommand command) {
         commandGateway.send(command);
         return "declaration type accepted";
+    }
+
+    @MutationMapping
+    public String addDeclarationTaxPercentage(@Argument AddDeclarationTaxPercentageCommand command) {
+        commandGateway.send(command);
+        return "declaration tax percentage accepted";
     }
 }

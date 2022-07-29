@@ -26,4 +26,11 @@ public class DeclarationProjection {
         declaration.setType(event.type());
         declarationRepository.save(declaration);
     }
+
+    @EventHandler
+    public void on(DeclarationTaxPercentageAddedEvent event) {
+        Declaration declaration = declarationRepository.findById(event.id().toString()).get();
+        declaration.setTaxPercentage(event.taxPercentrage());
+        declarationRepository.save(declaration);
+    }
 }

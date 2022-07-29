@@ -5,7 +5,6 @@ import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 
-import java.util.Objects;
 import java.util.UUID;
 
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
@@ -17,6 +16,7 @@ public class DeclarationAggregate {
     private UUID id;
     private UUID employeeId;
     private DeclarationType type;
+    private Integer taxPercentage;
 
     public  DeclarationAggregate() {
     }
@@ -35,6 +35,10 @@ public class DeclarationAggregate {
         apply(new DeclarationTypeSelectedEvent(command.id(), command.type()));
     }
 
+    @CommandHandler
+    public void handle(AddDeclarationTaxPercentageCommand command) {
+        apply(new DeclarationTaxPercentageAddedEvent(command.id(), command.taxPercentage()));
+    }
 
     @EventSourcingHandler
     public void on(DeclarationCreatedEvent event) {
@@ -45,5 +49,10 @@ public class DeclarationAggregate {
     @EventSourcingHandler
     public void on(DeclarationTypeSelectedEvent event) {
         this.type = event.type();
+    }
+
+    @EventSourcingHandler
+    public void on(DeclarationTaxPercentageAddedEvent event) {
+        this.taxPercentage = event.taxPercentrage();
     }
 }

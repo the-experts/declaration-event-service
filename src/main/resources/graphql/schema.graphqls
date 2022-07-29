@@ -7,6 +7,12 @@ type Mutation {
     updatePassword(command: UpdatePasswordCommand): String
     createDeclaration(command: CreateDeclaration): String
     selectDeclarationType(command: SelectDeclarationType): String
+    addDeclarationTaxPercentage(command: AddDeclarationTaxPercentage): String
+}
+
+input AddDeclarationTaxPercentage {
+    id: String
+    taxPercentage: Int
 }
 
 input CreateUserCommand {
