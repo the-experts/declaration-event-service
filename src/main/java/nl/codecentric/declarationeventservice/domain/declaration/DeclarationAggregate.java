@@ -1,5 +1,6 @@
 package nl.codecentric.declarationeventservice.domain.declaration;
 
+import nl.codecentric.declarationeventservice.domain.types.DeclarationType;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -14,6 +15,7 @@ public class DeclarationAggregate {
     @AggregateIdentifier
     private UUID id;
     private UUID employeeId;
+    private DeclarationType declarationType;
 
     public DeclarationAggregate () {
     }
@@ -21,6 +23,19 @@ public class DeclarationAggregate {
     @CommandHandler
     public DeclarationAggregate (CreateDeclarationCommand command) {
         apply(new DecarationCreatedEvent(command.id(), command.employeeId()));
+    }
+
+    @CommandHandler
+    public void handle(SelectDeclarationTypeCommand command) {
+        apply(new DeclarationTypeSelectedEvent(
+                command.declarationId(),
+                command.declarationType())
+        );
+    }
+
+    @EventSourcingHandler
+    public void on(DeclarationTypeSelectedEvent declarationTypeSelectedEvent) {
+        this.declarationType = declarationTypeSelectedEvent.declarationType();
     }
 
     @EventSourcingHandler
