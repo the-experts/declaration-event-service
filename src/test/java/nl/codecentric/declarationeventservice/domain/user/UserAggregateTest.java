@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserAggregateTest {
     private FixtureConfiguration<UserAggregate> fixture;
@@ -29,7 +28,7 @@ class UserAggregateTest {
     void itShouldFail() {
         var uuid = UUID.randomUUID();
         fixture.given(new UserCreatedEvent(uuid, "John", "John@codecentric.nl", "password"))
-                .when(new CreateUserCommand(uuid, "John", "John@codecentric.nl", "password"))
-                .expectException(IllegalArgumentException.class);
+                .when(new UpdatePasswordCommand(uuid, "otherPassword"))
+                .expectEvents(new PasswordChangedEvent(uuid, "otherPassword"));
     }
 }
