@@ -39,7 +39,7 @@ dependencies {
 tasks.getByName('jar') {
     enabled = false
     manifest {
-        attributes["Main-Class"] = "nl.codecentric.declarationeventservice.DeclarationEventServiceApplicationKt"
+        attributes["Main-Class"] = "nl.codecentric.declarationeventservice.DeclarationEventServiceApplication"
     }
 }
 
