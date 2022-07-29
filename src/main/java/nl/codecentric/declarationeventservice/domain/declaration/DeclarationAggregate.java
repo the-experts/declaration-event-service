@@ -1,6 +1,7 @@
 package nl.codecentric.declarationeventservice.domain.declaration;
 
 import nl.codecentric.declarationeventservice.domain.types.DeclarationType;
+import nl.codecentric.declarationeventservice.domain.types.TaxPercentageType;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -13,9 +14,11 @@ import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 @Aggregate
 public class DeclarationAggregate {
     @AggregateIdentifier
-    private UUID id;
-    private UUID employeeId;
+    private String id;
+    private String employeeId;
     private DeclarationType declarationType;
+
+    private TaxPercentageType taxPercentage;
 
     public DeclarationAggregate () {
     }
@@ -33,9 +36,22 @@ public class DeclarationAggregate {
         );
     }
 
+    @CommandHandler
+    public void handle(AddTaxPercentageCommand command) {
+        apply(new AddedTaxPercentageEvent(
+                command.declarationId(),
+                command.taxPercentageType()
+        ));
+    }
+
     @EventSourcingHandler
     public void on(DeclarationTypeSelectedEvent declarationTypeSelectedEvent) {
         this.declarationType = declarationTypeSelectedEvent.declarationType();
+    }
+
+    @EventSourcingHandler
+    public void on(AddedTaxPercentageEvent event){
+        this.taxPercentage = event.taxPercentageType();
     }
 
     @EventSourcingHandler

@@ -6,6 +6,6 @@ import java.util.UUID;
 
 public record CreateDeclarationCommand (
         @TargetAggregateIdentifier
-        UUID id,
-        UUID employeeId
+        String id,
+        String employeeId
 ) {}

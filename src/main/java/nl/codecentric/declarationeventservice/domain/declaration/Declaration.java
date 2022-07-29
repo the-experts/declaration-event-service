@@ -11,14 +11,14 @@ public class Declaration {
 
     public Declaration() {};
 
-    public Declaration(UUID id, UUID employeeId)  {
+    public Declaration(String id, String employeeId)  {
         this.id = id;
         this.employeeId = employeeId;
     }
 
     @Id
-    private UUID id;
-    private UUID employeeId;
+    private String id;
+    private String employeeId;
 
     private DeclarationType declarationType;
 
