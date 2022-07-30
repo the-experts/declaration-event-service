@@ -36,6 +36,13 @@ dependencies {
 
 }
 
+tasks.getByName('jar') {
+    enabled = false
+    manifest {
+        attributes["Main-Class"] = "nl.codecentric.declarationeventservice.DeclarationEventServiceApplication"
+    }
+}
+
 tasks.named('test') {
     useJUnitPlatform()
 }
