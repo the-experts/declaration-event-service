@@ -1,6 +1,7 @@
 name: 'build'
 
-on: [push]
+on:
+  push
 
 jobs:
   build:
@@ -16,10 +17,7 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action
-
       - name: Build with Gradle
-        uses: gradle/gradle-build-action
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: build
