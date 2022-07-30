@@ -6,6 +6,10 @@ on:
       - main
 
 jobs:
+  build:
+    uses:
+      codecentricnl/declaration-event-service/.github/workflows/build.yml@main
+
   deploy:
     needs:
       - build
