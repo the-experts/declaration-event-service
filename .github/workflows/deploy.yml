@@ -19,3 +19,11 @@ jobs:
         with:
           git_remote_url: 'ssh://dokku@patrickdronk.dev/declaration'
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Notify slack
+      - uses: ravsamhq/notify-slack-action@v2
+        if: always()
+        with:
+          status: ${{ job.status }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
