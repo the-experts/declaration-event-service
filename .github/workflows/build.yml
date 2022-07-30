@@ -1,7 +1,8 @@
 name: 'build'
 
 on:
-  push
+  - workflow_call
+  - push
 
 jobs:
   build:
