@@ -1,10 +1,41 @@
 type Query {
     hello: String
+    declaration(id: String): Declaration
+}
+
+type Declaration {
+    id: String
+    employeeId: String
+    declarationType: DeclarationType
+    employee: Employee
+}
+
+type Employee {
+    id: String
+    email: String
+    name: String
+}
+
+enum DeclarationType {
+    FUEL,
+    ITEM
 }
 
 type Mutation {
     createUser(command: CreateUserCommand): String
     updatePassword(command: UpdatePasswordCommand): String
+    createDeclaration(command: CreateDeclarationCommand): String
+    selectDeclarationType(command: SelectDeclarationTypeCommand): String
+}
+
+input SelectDeclarationTypeCommand {
+    declarationId: String
+    declarationType: DeclarationType
+}
+
+input CreateDeclarationCommand {
+    id: String
+    employeeId: String
 }
 
 input CreateUserCommand {

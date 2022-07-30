@@ -19,7 +19,7 @@ class UserAggregateTest {
 
     @Test
     void shouldHandleRegisterCustomerCommand() {
-        var uuid = UUID.randomUUID();
+        var uuid = UUID.randomUUID().toString();
         fixture.givenNoPriorActivity()
                 .when(new CreateUserCommand(uuid, "John", "John@codecentric.nl", "password"))
                 .expectEvents(new UserCreatedEvent(uuid, "John", "John@codecentric.nl", "password"));

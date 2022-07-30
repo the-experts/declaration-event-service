@@ -9,14 +9,14 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(UUID id, String name, String email) {
+    public Employee(String id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
     }
 
     @Id
-    private UUID id;
+    private String id;
     private String name;
     private String email;
 }

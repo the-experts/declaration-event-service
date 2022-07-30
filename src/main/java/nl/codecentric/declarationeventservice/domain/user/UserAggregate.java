@@ -12,7 +12,7 @@ import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 @Aggregate
 public class UserAggregate {
     @AggregateIdentifier
-    private UUID id;
+    private String id;
     private String password;
 
     public UserAggregate() {
