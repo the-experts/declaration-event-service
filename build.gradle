@@ -1,11 +1,14 @@
+ 
 plugins {
+    id 'com.avast.gradle.docker-compose' version '0.7.1'
     id 'org.springframework.boot' version '2.7.2'
     id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+    id "com.palantir.docker" version "0.22.1"
     id 'java'
 }
 
 group = 'nl.codecentric'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '17'
 
 configurations {
@@ -45,4 +48,8 @@ tasks.getByName('jar') {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+dockerCompose {
+    useComposeFiles = ['docker-compose.yml']
 }
