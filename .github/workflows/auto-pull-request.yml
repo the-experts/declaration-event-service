@@ -11,7 +11,7 @@ jobs:
         uses: ravsamhq/notify-slack-action@v2
         with:
           status: ${{ job.status }}
-          notification_title: "{workflow} TESTTITLE {status_message}"
-          message_format: "{emoji} *{workflow}* MESSAGEFORMAT {status_message} in <{repo_url}|{repo}>"
+          notification_title: "{workflow} for {branch}"
+          message_format: "{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
