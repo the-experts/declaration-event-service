@@ -1,0 +1,16 @@
+name: Auto pull request
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  slack-notifications:
+    runs-on: ubuntu-latest
+    name: Sends a message to Slack when a pull request is made
+    steps:
+      - name: Send message to Slack API
+        uses: archive/github-actions-slack@v2.0.0
+        id: notify
+        with:
+          slack-bot-user-oauth-access-token: ${{ secrets.SLACK_GITHUB_PR }}
+          slack-channel: C03Q7R6F189
+          slack-text: Hello! A new Pull Request has been made "${{ github.event_name }}" in "${{ github.repository }}" 🤓
