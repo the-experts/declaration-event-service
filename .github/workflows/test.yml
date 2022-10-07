@@ -6,8 +6,7 @@ on:
 
 jobs:
   build:
-    uses:
-      codecentricnl/declaration-event-service/.github/workflows/build.yml@main
+    uses: codecentricnl/declaration-event-service/.github/workflows/build.yml@main
 
   test:
     uses: ./.github/workflows/workflow-test-report.yml
