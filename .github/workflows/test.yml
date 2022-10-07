@@ -1,0 +1,15 @@
+name: 'test'
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    uses:
+      codecentricnl/declaration-event-service/.github/workflows/build.yml@main
+
+  test:
+    uses: ./.github/workflows/workflow-test-report.yml
+    needs:
+      - build
