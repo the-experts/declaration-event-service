@@ -1,0 +1,16 @@
+name: 'test'
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    uses:
+      ./.github/workflows/build.yml
+
+  test:
+    if: always() # always run even if the previous step fails
+    uses:
+      ./.github/workflows/workflow-test-report.yml
+    needs:
+      - build
