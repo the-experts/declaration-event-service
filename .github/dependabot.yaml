@@ -7,6 +7,8 @@ updates:
   - package-ecosystem: "gradle"
     # Look for `build.gradle` files in the `root` directory
     directory: "/"
+    # The branch to create the Pull Request to
+    target-branch: "main"
     # Check the registry for updates every day (weekdays)
     schedule:
       interval: "daily"
