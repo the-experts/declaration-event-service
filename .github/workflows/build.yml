@@ -29,8 +29,8 @@ jobs:
           branch: ${{ github.head_ref || github.ref }}
           base: main
 
-
-      - run: gh pr comment $PR_URL --body "First PR made"
+      - name: Add comment
+        run: gh pr comment $PR_URL --body "First PR made"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
