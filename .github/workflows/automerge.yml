@@ -12,4 +12,4 @@ jobs:
         with:
           # only allow for minor changes to be auto merged
           target: minor
-          github-token: ${{ secrets.mytoken }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
