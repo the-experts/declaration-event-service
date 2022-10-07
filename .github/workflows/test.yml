@@ -9,6 +9,7 @@ jobs:
     uses: codecentricnl/declaration-event-service/.github/workflows/build.yml@main
 
   test:
+    if: always() # always run even if the previous step fails
     uses: codecentricnl/declaration-event-service/.github/workflows/workflow-test-report.yml@main
     needs:
       - build
