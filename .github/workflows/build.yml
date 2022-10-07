@@ -26,7 +26,7 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v4.1.3
         with:
-          branch: ${{ GITHUB_REF }}
+          branch: ${{ github.base_ref }}
 
       - run: gh pr comment $PR_URL --body "First PR made"
         env:
