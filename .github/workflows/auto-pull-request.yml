@@ -1,7 +1,6 @@
 name: Auto pull request
 on:
-  pull_request:
-    types: [opened]
+  pull_request
 jobs:
   slack-notifications:
     runs-on: ubuntu-latest
