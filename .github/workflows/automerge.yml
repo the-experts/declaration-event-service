@@ -5,6 +5,8 @@ on:
 
 jobs:
   auto-merge:
+    needs:
+      - build
     permissions:
       pull-requests: write
     runs-on: ubuntu-latest
