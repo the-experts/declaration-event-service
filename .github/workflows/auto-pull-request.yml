@@ -12,5 +12,5 @@ jobs:
         id: notify
         with:
           slack-bot-user-oauth-access-token: ${{ secrets.SLACK_GITHUB_PR }}
-          slack-channel: C03Q7R6F189
+          slack-channel: C03P685JDU2
           slack-text: Hello! A new Pull Request has been made "${{ github.event_name }}" in "${{ github.repository }}" 🤓
