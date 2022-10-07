@@ -41,6 +41,6 @@ jobs:
         with:
           status: ${{ job.status }}
           notification_title: "Auto pull request created for ${{ github.ref }}"
-          message_format: "From commit ${{ github.event.pull_request.commit_url }} by ${{ github.event.head_commit.author.name }} with message: ${{ github.event.head_commit.message }}"
+          message_format: "From commit { commit_url } by ${{ github.event.head_commit.author.name }} with message: ${{ github.event.head_commit.message }}"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
