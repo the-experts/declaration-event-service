@@ -10,8 +10,8 @@ jobs:
       - name: Send message to Slack API
         uses: Gamesight/slack-workflow-status@v1.1.0
         with:
-          repo_token: ${{secrets.SLACK_GITHUB_PR}}
-          slack_webhook_url: ${{secrets.SLACK_GITHUB_WEBHOOK_URL}}
+          repo_token: 'xoxe.xoxp-1-Mi0yLTM3ODgyMjE5Mjk5NzEtMzgwMTI1OTk3ODQ4MS00MTg2NzIyOTA1MzAxLTQxODk2NzczNTQ0MzQtM2MzNDExMDk2Yzc2OTE5NGE3MTc4MWMyNjA3ODc0YTQ5MWRhYjMwOTM2OTY2MWMzYjA1MGY2Yjc5YzI1ZTQzOA'
+          slack_webhook_url: 'https://hooks.slack.com/services/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'
           channel: C03P685JDU2
           name: 'Test'
           icon_emoji: ':poop:'
