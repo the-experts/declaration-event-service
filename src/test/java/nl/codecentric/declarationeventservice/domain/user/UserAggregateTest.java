@@ -24,4 +24,12 @@ class UserAggregateTest {
                 .when(new CreateUserCommand(uuid, "John", "John@codecentric.nl", "password"))
                 .expectEvents(new UserCreatedEvent(uuid, "John", "John@codecentric.nl", "password"));
     }
+
+    @Test
+    void shouldFailOnPurposeTest() {
+        var uuid = UUID.randomUUID().toString();
+        fixture.givenNoPriorActivity()
+                .when(new CreateUserCommand(uuid, "John", "John@codecentric.nl", "password"))
+                .expectEvents(new UserCreatedEvent(uuid, "Bert", "Bert@codecentric.nl", "pwd"));
+    }
 }
