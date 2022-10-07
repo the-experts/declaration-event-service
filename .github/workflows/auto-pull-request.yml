@@ -11,7 +11,7 @@ jobs:
         uses: Gamesight/slack-workflow-status@v1.1.0
         with:
           repo_token: ${{secrets.SLACK_GITHUB_PR}}
-          slack_webhook_url: ${{secrets.SLACK_WEBHOOK_URL}}
+          slack_webhook_url: ${{secrets.SLACK_GITHUB_WEBHOOK_URL}}
           channel: C03P685JDU2
           name: 'Test'
           icon_emoji: ':poop:'
