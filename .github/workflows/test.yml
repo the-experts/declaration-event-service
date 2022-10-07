@@ -7,11 +7,11 @@ on:
 jobs:
   build:
     uses:
-      codecentricnl/declaration-event-service/.github/workflows/build.yml
+      codecentricnl/declaration-event-service/.github/workflows/build.yml@$GITHUB_REF_NAME
 
   test:
     if: always() # always run even if the previous step fails
     uses:
-      codecentricnl/declaration-event-service/.github/workflows/workflow-test-report.yml
+      codecentricnl/declaration-event-service/.github/workflows/workflow-test-report.yml@$GITHUB_REF_NAME
     needs:
       - build
