@@ -1,17 +1,16 @@
 name: 'test'
 
 on:
-  push:
   pull_request:
 
 jobs:
   build:
     uses:
-      codecentricnl/declaration-event-service/.github/workflows/build.yml@$GITHUB_REF_NAME
+      codecentricnl/declaration-event-service/.github/workflows/build.yml@$GITHUB_HEAD_REF
 
   test:
     if: always() # always run even if the previous step fails
     uses:
-      codecentricnl/declaration-event-service/.github/workflows/workflow-test-report.yml@$GITHUB_REF_NAME
+      codecentricnl/declaration-event-service/.github/workflows/workflow-test-report.yml@$GITHUB_HEAD_REF
     needs:
       - build
