@@ -9,6 +9,6 @@ jobs:
     uses: codecentricnl/declaration-event-service/.github/workflows/build.yml@main
 
   test:
-    uses: ./.github/workflows/workflow-test-report.yml
+    uses: codecentricnl/declaration-event-service/.github/workflows/workflow-test-report.yml@main
     needs:
       - build
