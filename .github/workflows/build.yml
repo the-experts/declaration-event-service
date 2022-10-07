@@ -26,7 +26,7 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v4.1.3
         with:
-          title: '${{ github.head_ref || github.ref }}'
+          title: '${{ github.ref_name }}'
           branch: ${{ github.head_ref || github.ref }}
           base: main
 
@@ -40,7 +40,7 @@ jobs:
         uses: ravsamhq/notify-slack-action@v2
         with:
           status: ${{ job.status }}
-          notification_title: "Auto pull request created for ${{ branch }}"
-          message_format: "${{ github.event.head_commit.author.name }} ${{ github.event.head_commit.message }}"
+          notification_title: "Auto pull request created for ${{ github.ref }}"
+          message_format: "From commit ${{ github.event.pull_request.commit_url }} by ${{ github.event.head_commit.author.name }} with message: ${{ github.event.head_commit.message }}"
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
